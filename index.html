@@ -1,1 +1,74 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Monitor de Asistencias Biométricas</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <div class="contenedor">
+    <header class="encabezado">
+      <div>
+        <h1>Monitor de Huellas</h1>
+        <p>Verificaciones en tiempo real desde Firebase Realtime Database</p>
+      </div>
+      <div class="estado" id="estadoConexion">Conectando...</div>
+    </header>
 
+    <section class="panel">
+      <div class="tarjeta resumen">
+        <h2>Total de verificaciones</h2>
+        <p id="totalAsistencias">0</p>
+      </div>
+
+      <div class="tarjeta resumen">
+        <h2>Último usuario verificado</h2>
+        <p id="ultimaAsistencia">Sin datos</p>
+      </div>
+
+      <div class="tarjeta resumen">
+        <h2>Hora actual</h2>
+        <p id="horaActual">--:--:--</p>
+      </div>
+    </section>
+
+    <section class="tarjeta tabla-contenedor">
+      <div class="titulo-tabla">
+        <div>
+          <h2>Registro de usuarios verificados</h2>
+          <p>Se muestran los datos enviados por el ESP32: id, nombre, carnet, correo, celular y hora.</p>
+        </div>
+        <button id="btnLimpiar">Limpiar vista</button>
+      </div>
+
+      <table>
+        <thead>
+          <tr>
+            <th>N°</th>
+            <th>ID</th>
+            <th>Nombre</th>
+            <th>Carnet / CI</th>
+            <th>Correo</th>
+            <th>Celular</th>
+            <th>Hora de verificación</th>
+            <th>Clave Firebase</th>
+            <th>Demás datos recibidos</th>
+          </tr>
+        </thead>
+        <tbody id="tablaAsistencias">
+          <tr>
+            <td colspan="9" class="sin-datos">Esperando verificaciones...</td>
+          </tr>
+        </tbody>
+      </table>
+    </section>
+  </div>
+
+  <!-- Firebase SDK version 8, sencilla para principiantes -->
+  <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-app.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-database.js"></script>
+
+  <script src="app.js"></script>
+</body>
+</html>
